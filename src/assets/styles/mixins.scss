@@ -21,6 +21,28 @@
     display: grid;
     align-items: center;
     // font: normal normal normal 14px/24px $primaryFont;
+    .item {
+      display: flex;
+      span {
+        padding: 0 8px;
+        display: inline-flex;
+        position: relative;
+        &::after {
+          content: "";
+          width: 1px;
+          height: 100%;
+          background-color: $border-color;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        &:last-child {
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
   }
 
   .delete-cell {
@@ -51,5 +73,44 @@
     // &:hover {
     //   opacity: 0.9;
     // }
+  }
+}
+
+@mixin containerItem(
+  $borderColor: #e8e8e8,
+  $bgColor: #fff,
+  $borderRadius: 8px,
+  $minHeight: 40px,
+  $fontSize: 14px,
+  $separatorColor: #1fc16b
+) {
+  display: flex;
+  align-items: center;
+  border: 1px solid $borderColor;
+  background-color: $bgColor;
+  border-radius: $borderRadius;
+  min-height: $minHeight;
+
+  span {
+    padding: 2px 8px;
+    display: inline-flex;
+    position: relative;
+    font-size: $fontSize;
+
+    &::after {
+      content: "";
+      width: 1px;
+      height: 100%;
+      background-color: $separatorColor;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
   }
 }
