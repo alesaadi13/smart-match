@@ -1,9 +1,43 @@
 import "./Home.scss";
 import { Card } from "../../components/Card/Card";
+import useApi from "../../api/hooks/useApi";
+import axios from "axios";
+import { useEffect } from "react";
 
-function Home() {
+const Home = () => {
+  const { data, loading, error, fetchData } = useApi("/testapi/inhouse");
+
+  useEffect(() => {
+    getInhouseData();
+  }, []);
+
+  const getInhouseData = async () => {
+    try {
+      const response = await axios.get("https://itabs.com.tr/testapi/inhouse", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer test_alesaadi13",
+        },
+      });
+
+      console.log("Data:", response.data);
+      return response.data;
+    } catch (error: any) {
+      console.error("Error fetching inhouse data:", error.message);
+      throw error;
+    }
+  };
+
+  console.log("data", data);
+
   return (
     <main className="home">
+      <div>
+        <button onClick={getInhouseData}>Get Inhouse Data</button>;
+        {loading && <p>Loading...</p>}
+        {error && <p style={{ color: "red" }}>Error: {error}</p>}
+        <button onClick={fetchData}>Reload</button>
+      </div>
       <div className="container">
         <div className="panel">
           <Card status="green" />
@@ -39,6 +73,6 @@ function Home() {
       </div>
     </main>
   );
-}
+};
 
 export default Home;
