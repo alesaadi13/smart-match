@@ -1,6 +1,8 @@
 import "./Card.scss";
+import dataInhouse from "../../api/hooks/inhouse.json";
+console.log("dataInhouse", dataInhouse);
 
-export const Card = ({ status }: any) => {
+export const Card = ({ status, onClick, data = dataInhouse.data }: any) => {
   const statusClass =
     status === "green"
       ? "selected-card--green"
@@ -8,14 +10,21 @@ export const Card = ({ status }: any) => {
       ? "selected-card--orange"
       : "selected-card--empty";
 
+  const handleClick = () => {
+    console.log("onClick");
+    onClick();
+  };
+  console.log("data", data);
   return (
     <>
       <div className={`selected-card ${statusClass}`}>
         <div className="cell">Container Info</div>
         <div className="cell">
-          <div className="cell">Shipping Details</div>
+          <div className="cell">
+            {/* <div>{data && data.map((x: any) => <span key={x.id}></span>)}</div> */}
+          </div>
           <div className="delete-cell">
-            <button className="delete-btn"></button>
+            <button onClick={handleClick} className="delete-btn"></button>
           </div>
           <div className="cell">
             <div>
