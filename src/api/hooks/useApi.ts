@@ -13,6 +13,7 @@ const axiosInstance: AxiosInstance = axios.create({
 });
 
 const useApi = (url: string, defaultConfig?: AxiosRequestConfig) => {
+    
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
