@@ -8,3 +8,7 @@
     @include gridRowSelected($orange-border, $light-orange, $gray-text);
   }
 }
+
+.container-item {
+  @include containerItem();
+}

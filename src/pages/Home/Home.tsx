@@ -3,6 +3,8 @@ import { Card } from "../../components/Card/Card";
 import useApi from "../../api/hooks/useApi";
 import axios from "axios";
 import { useEffect } from "react";
+import dataInhouse from "../../api/hooks/inhouse.json";
+import { CardItem } from "../../components/Card/CardItem";
 
 const Home = () => {
   const { data, loading, error, fetchData } = useApi("/testapi/inhouse");
@@ -54,10 +56,9 @@ const Home = () => {
             </div>
 
             <div className="cell">
-              <div>ETD: 11-03-2023</div>
-              <div>ETA: 11-03-2023</div>
-              <div>From: Bandar Abbas</div>
-              <div>To: Istanbul</div>
+              <CardItem data={dataInhouse.data.list} />
+              <CardItem />
+              <CardItem />
             </div>
 
             <div className="cell">
