@@ -1,0 +1,55 @@
+@mixin gridRowSelected($border-color, $bg-color, $text-color) {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(200px, 7fr);
+  gap: 1rem;
+  border: 1px dashed $border-color;
+  border-radius: 8px;
+
+  > :last-child {
+    display: grid;
+    grid-template-columns: minmax(150px, 4fr) 28px minmax(200px, 3fr);
+    gap: 0;
+    .price {
+      background-color: $border-color;
+    }
+  }
+
+  .cell {
+    text-align: center;
+    background-color: $bg-color;
+    color: $text-color;
+    display: grid;
+    align-items: center;
+    // font: normal normal normal 14px/24px $primaryFont;
+  }
+
+  .delete-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 40px;
+    background-color: $border-color;
+    height: 100%;
+    min-height: 40px;
+    transition: all 0.3s ease;
+
+    .delete-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $border-color;
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      background: transparent url("../../assets/images/icons/close.png")
+        no-repeat center center;
+      background-size: contain;
+    }
+
+    // &:hover {
+    //   opacity: 0.9;
+    // }
+  }
+}

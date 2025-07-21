@@ -1,0 +1,10 @@
+@use "../../assets/styles" as *;
+
+.selected-card {
+  &--green {
+    @include gridRowSelected($green-border, $light-green, $gray-text);
+  }
+  &--orange {
+    @include gridRowSelected($orange-border, $light-orange, $gray-text);
+  }
+}
