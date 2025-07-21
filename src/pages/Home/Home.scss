@@ -1,0 +1,68 @@
+@use "../../assets/styles/variables" as *;
+
+.home {
+  .container {
+    background-color: $gray-bg;
+    border: 1px solid $gray-border;
+  }
+}
+
+.panel {
+  padding: 1rem 0.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  border: 2px solid $white;
+  background-color: $gray-bg;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(300px, 4fr) minmax(
+      200px,
+      3fr
+    );
+  gap: 1rem;
+
+  :first-child {
+    flex: 1;
+    height: 100%;
+    align-content: center;
+  }
+}
+
+.data-row {
+  .cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: $gray-text;
+
+    div {
+      padding: 0.5rem;
+      border: 1px solid $gray-border;
+      border-radius: 8px;
+      background-color: $white;
+    }
+  }
+}
+
+.price {
+  display: inline-flex;
+  border-radius: 25px;
+  min-width: 42px;
+  min-height: 19px;
+  background-color: $green;
+  color: $white;
+  padding: 2px 5px;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .grid-row {
+    grid-template-columns: 1fr;
+  }
+
+  .delete-cell {
+    justify-content: flex-end;
+  }
+}
